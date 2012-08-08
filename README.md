@@ -1,4 +1,4 @@
 ageoftower
 ==========
 
-A amazing android tower defense with libgdx
+An amazing android tower defense with libgdx
