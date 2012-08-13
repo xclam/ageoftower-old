@@ -13,17 +13,16 @@ import com.badlogic.gdx.utils.XmlReader.Element;
 import com.me.mygdxgame.MyGameStage;
 
 public class MapLayer extends Layer{
-	public TextureRegion _mTextureRegion;  
-	MyGameStage _mMyStage;
-	MyXMLProcessor _mMxp;
-	public int _mTextureMapX;
-	public int _mTextureMapY;
+	private MyGameStage _mMyStage;
+	private MyXMLProcessor _mMxp;
+	private final int TILE_SIZE = 32;
 	
 	public MapLayer(MyGameStage myStage){		
 		_mMyStage = myStage;
 		XmlReader xml = new XmlReader();
+		//Gdx.app.log("MyTag", "MapLayer() called");
 		try {
-			Element root = xml.parse(Gdx.files.internal("data/map.xml"));
+			Element root = xml.parse(Gdx.files.internal("data/map2.xml"));
 			_mMxp = new MyXMLProcessor(root,this);
 			_mMxp.process(MyXMLProcessor.TYPE_MAP);
 		} catch (IOException e) {
@@ -35,14 +34,12 @@ public class MapLayer extends Layer{
 	@Override
 	public void draw(SpriteBatch batch, float parentAlpha){
 		//Gdx.app.log("MyTag", "MapLayer.draw() called");
-		batch.draw(_mTextureRegion,_mMyStage.get_mRootPosX(),_mMyStage.get_mRootPosY(),_mTextureMapX,_mTextureMapY);
+		//batch.draw(_mTextureRegion,_mMyStage.get_mRootPosX(),_mMyStage.get_mRootPosY(),_mTextureMapX,_mTextureMapY);
+		super.draw(batch, parentAlpha);
 	}
 
-	public void set_mTextureRegion(TextureRegion _mTextureRegion) {
-		this._mTextureRegion = _mTextureRegion;
+	public int getTileSize() {
+		return TILE_SIZE;
 	}
 
-	public TextureRegion get_mTextureRegion() {
-		return _mTextureRegion;
-	}
 }

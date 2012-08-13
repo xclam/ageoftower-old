@@ -8,6 +8,7 @@ import layer.GridLayer;
 
 import shapes.MyCircle;
 import shapes.MyRectangle;
+import utils.MapNode;
 import utils.NodeGrid;
 
 import com.badlogic.gdx.Gdx;
@@ -26,8 +27,9 @@ public class MyXMLProcessor {
 	public static final int TYPE_GRID = 2;
 	
 	//-- instance var
-	Element _mElmt;
-	Layer _mL;
+	private Element _mElmt;
+	private Layer _mL;
+	private String _mXmlFile;
 	
 	public MyXMLProcessor(Element root,Layer l) {
 		_mElmt = root;
@@ -65,16 +67,19 @@ public class MyXMLProcessor {
 
 	private void setMap() {
 		// gestion de la map (fichier map.xml) ----------------------------------------------------------- //
+		//Gdx.app.log("MyTag", "setMap() called");
 		Array<Element> l = _mElmt.getChildrenByName("map");
+		l = l.get(0).getChildrenByName("node");
 		Iterator<Element> t = l.iterator();
 		Element tmp;
 		while(t.hasNext()){
 			Gdx.app.log("MyTag", " MyXMLProcessor.process() -- map");
 			tmp = t.next();
 			Texture tex = new Texture(Gdx.files.internal(tmp.getAttribute("texture")));
-			((MapLayer)_mL)._mTextureRegion = new TextureRegion(tex,tmp.getInt("sizeX"),tmp.getInt("sizeY"));
-			((MapLayer)_mL)._mTextureMapX = tmp.getInt("sizeX");
-			((MapLayer)_mL)._mTextureMapY = tmp.getInt("sizeY");
+			MapNode a = new MapNode(tmp.getInt("positionX"), tmp.getInt("positionY"), 
+					((MapLayer)_mL).getTileSize(), ((MapLayer)_mL).getTileSize(),false, 
+					new TextureRegion(tex,((MapLayer)_mL).getTileSize(),((MapLayer)_mL).getTileSize()));
+			((MapLayer)_mL).addActor(a);
 		}
 	}
 

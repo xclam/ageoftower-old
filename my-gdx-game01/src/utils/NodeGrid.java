@@ -2,7 +2,7 @@ package utils;
 
 
 /*
- * Class materialisant la grille en daux dimention
+ * Class materialisant la grille en deux dimention
  * Chaque noeuds pourra recevoir une tourelle
  */
 public class NodeGrid {
