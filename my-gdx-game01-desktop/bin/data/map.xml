@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+	<!-- Fichier de definition de la map, 
+			- a chaque cellule corespond un emplacement potentielle pour un toutrelle
+		
+		 -->
+	
+	<!-- Definition global de la map -->
+	<map slotX="20" slotY="10" texture="data/test_map_1024.png" texture_size="1024" sizeX="1024" sizeY="800">
+		<!-- Descritpion d'une zone constructible particuliere de la map
+			    - Non contructible -->
+		<node positionX="10" PositionY="5" buildable="false" />
+	</map>
+	
+</root>

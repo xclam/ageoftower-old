@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<root>
+	<!-- La position des forme est en % a partir du coin inferieur gauche de l'encran du jeux
+		    - Pour les rectangle la position defini le coin superieur-gauche
+			- Pour les cerlce on positionne le centre
+		 Les taille sont en nbre de pixel(p) ou en % de la taille de l'ecran(%)
+
+		 Les texture,
+			- Pour le cercle: la texture sera appliqué sue un carréde cote le radius et de centre,le meme centre que le cerce
+			- Pour les rectangles la texture sera etiré sur la surface du rectangle
+			
+		 Les zone_type sont defini dans le class HudLayer.
+		 	//-- constantes statique
+			static final int ZONE_STATE_IDLE = 0;
+			static final int ZONE_STATE_ZOOMING = 1;
+			static final int ZONE_STATE_SCROLLING = 2;
+			static final int ZONE_STATE_PLACING_TURET = 3;
+			static final int ZONE_STATE_SELECTING_TURET = 4;
+			static final int ZONE_STATE_ACTION_TRIGERED = 5;
+		 -->
+	
+	<!-- Cerlcle dans le coin inferieur gauche -->
+	<shape id="1" type="circle" positionX="0p" positionY="0p" radius="100p" hide="false" texture="data/circle.png" texture_size="128" zone_type="5" />
+	<!-- rectangle dans la partie droite de l'ecran pour les zoom -->
+	<shape id="2" type="rectangle" positionX="90%" positionY="0p" sizeX="10%" sizeY="100%" hide="false" texture="data/blue.png" texture_size="1" zone_type="1" />
+	<!-- rectangle dans la partie haute de l'ecran dedier a l'experience -->
+	<shape id="3" type="rectangle" positionX="0p" positionY="90%" sizeX="19%" sizeY="10%" hide="false" texture="data/blue.png" texture_size="1" zone_type="0" />
+	<!-- rectangle dans la partie haute de l'ecran dedier au level  -->
+	<shape id="4" type="rectangle" positionX="20%" positionY="90%" sizeX="19%" sizeY="10%" hide="false" texture="data/blue.png" texture_size="1" zone_type="0" />
+	<!-- rectangle dans la partie haute de l'ecran dedier a la vie -->
+	<shape id="5" type="rectangle" positionX="40%" positionY="90%" sizeX="19%" sizeY="10%" hide="false" texture="data/blue.png" texture_size="1" zone_type="0" />
+	<!-- rectangle dans la partie haute de l'ecran dedier au credits -->
+	<shape id="6" type="rectangle" positionX="60%" positionY="90%" sizeX="19%" sizeY="10%" hide="false" texture="data/blue.png" texture_size="1" zone_type="0" />
+	
+	<!-- Rectangle definissant la zone d'écran dans laquelle ou pourra scroller ou deposer un tourelle-->
+	<shape id="7" type="rectangle" positionX="0p" positionY="0p" sizeX="90%" sizeY="100%" hide="true" texture="data/blue.png" texture_size="1" zone_type="2" />
+	
+</root>
